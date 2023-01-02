@@ -7,6 +7,7 @@ public class Files {
 
     //Skapar en scanner som kan användas i hela klassen
     Scanner myScanner = new Scanner(System.in);
+
     boolean addToFile = false;
     boolean overwriteFile = false;
 
@@ -45,7 +46,6 @@ public class Files {
         File myFile = new File("words.txt");
         System.out.println(myFile.getAbsolutePath());
 
-
         String[] fileList = myFile.list();
 
         //Letar igenom alla listor av strings för att hitta information
@@ -55,14 +55,17 @@ public class Files {
     }
 
     private void savePeopleToFile(){
+        //skapar en lista med 4 personer, som står listade i peopleFile
         String[] people = {"Nova", "Smilla", "Kylo", "Skorpan"};
         File peopleFile = new File("people.txt");
 
+        //Om man inte kan skriva från peopleFile så kommer programmet skicka ut meddelandet som står
         if (peopleFile.canWrite() == false){
             System.out.println("You can't write to people.txt");
             return;
         }
 
+        //lägger till personerna till filen
         try {
             FileWriter peopleFileWriter = new FileWriter("people.txt", addToFile);
 
@@ -74,9 +77,5 @@ public class Files {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
-
     }
-
 }
